@@ -31,7 +31,8 @@ export default function LoginPage({setToken}) {
                 })
                 const result = await response.json();
                 const { token } = result
-                localStorage.setItem('token', token);
+                sessionStorage.setItem('token', token);
+                sessionStorage.setItem("username",username );
                 setToken(token)
                 console.log(result)
                 if (token) {

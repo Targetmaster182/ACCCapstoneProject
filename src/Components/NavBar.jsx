@@ -6,6 +6,7 @@ export default function NavBar({token, setToken}) {
     const navigate = useNavigate()
 
     async function handleClick(token, setToken){
+        sessionStorage.removeItem(token, setToken)
         await setToken("")
         navigate('/')
 
@@ -37,7 +38,7 @@ export default function NavBar({token, setToken}) {
                     <li>PROFILE</li>                   
 
 
-                    <button className="logout" onClick={() => handleClick(token, setToken)}>LOGOUT</button>
+                    <button className="logout" onClick={() => handleClick(token, setToken, sessionStorage)}>LOGOUT</button>
                     
                     
                 </ul>

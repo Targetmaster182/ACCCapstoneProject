@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem('token')) 
+  const [token, setToken] = useState(sessionStorage.getItem('token')) 
 
 
 
@@ -14,7 +14,7 @@ function App() {
     <div>
             <NavBar token={token} setToken={setToken}/>
       <Routes>
-        <Route path='/' element={<Login setToken={setToken}/>} />
+        <Route path='/' element={<Login token={token} setToken={setToken}/>} />
         <Route path='Products' element={<AllProducts token={token} setToken={setToken}/>}/>
       </Routes>
     </div>
