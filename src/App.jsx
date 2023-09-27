@@ -3,6 +3,7 @@ import NavBar from './Components/NavBar'
 import { Route, Routes } from 'react-router-dom'
 import Login from './Pages/Login'
 import { useState } from 'react'
+import SingleProduct from './Pages/SingleProduct'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login token={token} setToken={setToken}/>} />
         <Route path='Products' element={<AllProducts token={token} setToken={setToken}/>}/>
+        <Route path='/products/:id' element={<SingleProduct token={token} setToken={setToken} />}/>
       </Routes>
     </div>
   )
