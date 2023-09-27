@@ -5,7 +5,7 @@ import '../Components/AllProducts.css'
 
 const API_URL = 'https://fakestoreapi.com'
 
-const AllProducts = ({token}) => {
+const AllProducts = ({token, setToken, cart, setcart}) => {
 
     const [products, setProducts] = useState([]);
     const [priceRange, setPriceRange] = useState(200);
@@ -64,6 +64,26 @@ const AllProducts = ({token}) => {
 
       }
 
+      function addToCart(product) {
+        let newCart = [...cart];
+        let cartItem = cart.find(
+            (item) => product.id === item.id
+        );
+        
+        if (cartItem) {
+            cartItem.quantity++;
+        }else {
+            cartItem = {
+            ...product,
+            quantity:1,
+            
+        }
+        newCart.push(cartItem);
+    }
+        setcart(newCart);
+
+      }
+
 
     
 
@@ -79,7 +99,7 @@ const AllProducts = ({token}) => {
                             <option value={category} key={category}>{category}</option>
                         ))}
                     </select>
-                    <div class="slider">
+                    <div className="slider">
                         <input type="range" min="0" max="200" value={priceRange} onChange={(e) => setPriceRange(e.target.value)} oninput="rangeValue.innerText = this.value"/><p id="rangeValue">200</p>
                     </div>
                 <div className="searchbar">
@@ -155,7 +175,7 @@ const AllProducts = ({token}) => {
                             </div>   
                             <div className="buttons">
                             <Link to={`/products/${product.id}`}><button className="details" >DETAILS</button></Link>
-                                <button className="buy"><svg width="24" height="24" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"><path d="M1.82 7.5H10l1-5H1a.5.5 0 0 0-.49.59l.82 4a.49.49 0 0 0 .49.41Zm9.18-5l.42-1.6a.5.5 0 0 1 .49-.4h1.59m-3.5 7l-.42 2.1a.5.5 0 0 1-.49.4H3"/><circle cx="3.5" cy="13" r=".5"/><circle cx="8.5" cy="13" r=".5"/></g></svg></button>
+                                <button className="add" onClick={() => addToCart(product)}>ADD TO CART</button>
                             </div>                     
                         </div>                    
                     ))}

@@ -53,7 +53,7 @@
 	top:1px;
 }
 
-.buy {
+.add {
 	box-shadow: 0px 0px 0px 2px #9fb4f2;
 	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
 	background-color:#7892c2;
@@ -68,11 +68,11 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #283966;
 }
-.buy:hover {
+.add:hover {
 	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
 	background-color:#476e9e;
 }
-.buy:active {
+.add:active {
 	position:relative;
 	top:1px;
 }

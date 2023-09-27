@@ -2,22 +2,33 @@ import AllProducts from './Pages/AllProducts'
 import NavBar from './Components/NavBar'
 import { Route, Routes } from 'react-router-dom'
 import Login from './Pages/Login'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SingleProduct from './Pages/SingleProduct'
+import CartPage from './Pages/CartPage'
+
+
+
 
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('token')) 
+  const [cart, setcart] = useState([])
+  console.log(cart);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  },[cart]);
 
 
 
   return (
     <div>
-            <NavBar token={token} setToken={setToken}/>
+            <NavBar token={token} setToken={setToken} cart={cart} setcart={setcart}/>
       <Routes>
-        <Route path='/' element={<Login token={token} setToken={setToken}/>} />
-        <Route path='Products' element={<AllProducts token={token} setToken={setToken}/>}/>
-        <Route path='/products/:id' element={<SingleProduct token={token} setToken={setToken} />}/>
+        <Route path='/' element={<Login token={token} setToken={setToken} cat={cart}setcart={setcart}/>} />
+        <Route path='Products' element={<AllProducts token={token} setToken={setToken} cart={cart} setcart={setcart}/>}/>
+        <Route path='/products/:id' element={<SingleProduct token={token} setToken={setToken} cart={cart} setcart={setcart} />}/>
+        <Route path='Cart' element={<CartPage token={token} setToken={setToken} cart={cart} setcart={setcart} />} />
       </Routes>
     </div>
   )
