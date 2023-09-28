@@ -117,7 +117,7 @@ const AllProducts = ({token, setToken, cart, setcart}) => {
 
                     <div className="products" >
                         {filteredProducts.filter(filterProducts).map(product =>(
-                            <div className="eachproduct" key={product.id}>
+                            <div className="eachproduct1" key={product.id}>
                                 <div >
                                     <img src={product.image} alt={product.title}/>
                                 </div>
@@ -164,7 +164,7 @@ const AllProducts = ({token, setToken, cart, setcart}) => {
             <div>
                 <div className="products" >
                     {filteredProducts.filter(filterProducts).map(product =>(
-                        <div className="eachproduct" key={product.id}>
+                        <div className="eachproduct1" key={product.id}>
                             <div >
                                 <img src={product.image} alt={product.title}/>
                             </div>

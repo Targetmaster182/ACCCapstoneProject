@@ -6,14 +6,15 @@ import { useEffect, useState } from 'react'
 import SingleProduct from './Pages/SingleProduct'
 import CartPage from './Pages/CartPage'
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')  || '[]')
+
 
 
 
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('token')) 
-  const [cart, setcart] = useState([])
-  console.log(cart);
+  const [cart, setcart] = useState(cartFromLocalStorage)
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
