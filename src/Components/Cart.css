@@ -11,26 +11,47 @@
     overflow: hidden;
 
 }
+.products {
+    display: flex;
+    flex-direction: column;
+}
 .products img {
     width: 200px;
     padding-right: 1em;
+
 }
 
 .cartTotal {
     display: flex;
-    flex-direction:column-reverse;
+    flex-direction: row-reverse;
+    justify-content:space-between;
+
 }
 .cartTotal p {
     display: flex;
     flex-direction: column;
-    align-self: flex-end;
     padding: 20px;
     margin: 20px;
     border: 1px solid gray;
+    height: fit-content;
     
 }
 
 
 .checkout {
     margin: 20px;
+    
+    
+
+}
+
+.titles {
+    margin: 20px;
+    padding-left: 80px;
+    align-content:flex-start;
+   
+}
+
+.quantity {
+    width: 30px;
 }

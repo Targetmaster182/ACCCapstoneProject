@@ -1,8 +1,8 @@
-
 import '../Components/Cart.css'
 
 
 const cartPage = ({cart, setcart }) => {
+    
 
 async function deleteItem(id) {
     setcart(cart.filter(item => item.id !== id));
@@ -15,12 +15,25 @@ const setQuantity = (item, amount) => {
     
 }
 
+async function checkout(cart, setcart){   
+    localStorage.clear(cart, setcart)
+    await setcart("") 
+    window.location.reload(false); 
+    alert("Thank you for your purchase");
+      
+}
+
     return (
         <div>
             <div className='cartTotal' >
-                <p>Subtotal = {cart.reduce((sum, item, quantity) => sum + item.price * item.quantity, 0 )} <button className='checkout' >CHECKOUT</button></p>
+                <p>Subtotal = {cart.reduce((sum, item) => sum + item.price * item.quantity, 0 )} <button className='checkout' onClick={() => checkout(cart, setcart, localStorage)} >CHECKOUT</button></p>
+
+                <div className='titles'>
+                    <h1>Shopping Cart</h1>
+                </div>
                 
             </div>
+
             <div className='products'>
                 {cart.map(item =>(
                     <div className='eachproduct' key={item.id}>
@@ -33,7 +46,7 @@ const setQuantity = (item, amount) => {
                                 <input 
                                 className='quantity'
                                 value ={item.quantity} 
-                                onChange={(e) => setQuantity(item,  parseInt(e.target.value))}/>
+                                onChange={(e) => setQuantity(item,  e.target.value)}/>
                                 <div>
                                     <span onClick={() => deleteItem(item.id)}>Remove</span>
                                 </div>

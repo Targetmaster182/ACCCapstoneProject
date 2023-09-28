@@ -100,7 +100,8 @@ const AllProducts = ({token, setToken, cart, setcart}) => {
                         ))}
                     </select>
                     <div className="slider">
-                        <input type="range" min="0" max="200" value={priceRange} onChange={(e) => setPriceRange(e.target.value)} oninput="rangeValue.innerText = this.value"/><p id="rangeValue">200</p>
+                    <input className="filterbar" type="range" min="0" max="200" value={priceRange} onChange={(e) => setPriceRange(e.target.value)}>
+                </input>
                     </div>
                 <div className="searchbar">
                     <form>
@@ -128,6 +129,7 @@ const AllProducts = ({token, setToken, cart, setcart}) => {
                                 </div>   
                                 <div className="buttons">
                                 <Link to={`/products/${product.id}`}><button className="details" >DETAILS</button></Link>
+                                
                                 </div>                     
                             </div>                    
                         ))}
@@ -147,8 +149,9 @@ const AllProducts = ({token, setToken, cart, setcart}) => {
                         <option value={category} key={category}>{category}</option>
                     ))}
                 </select>
-                <input className="filterbar" type="range" min="0" max="200" value={priceRange} onChange={(e) => setPriceRange(e.target.value)}>
-                </input>
+                <div className="slider">
+                    <input className="filterbar" type="range" min="0" max="200" value={priceRange} onChange={(e) => setPriceRange(e.target.value)}></input>
+                </div>
 
             <div className="searchbar">
                     <form>

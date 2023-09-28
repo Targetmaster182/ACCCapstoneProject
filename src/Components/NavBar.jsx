@@ -12,7 +12,7 @@ export default function NavBar({token, setToken, cart, setcart}) {
     };
 
     async function handleClick(token, setToken){
-        sessionStorage.removeItem(token, setToken)
+        sessionStorage.clear(token, setToken)
         await setToken("")
         navigate('/')
 
@@ -28,6 +28,7 @@ export default function NavBar({token, setToken, cart, setcart}) {
                     <li>
                         <Link to="/Products">PRODUCTS</Link>
                     </li>
+                    
                 </ul>
             </nav>
         )

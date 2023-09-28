@@ -12,9 +12,11 @@ const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')  || '[]')
 
 
 
+
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('token')) 
   const [cart, setcart] = useState(cartFromLocalStorage)
+
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
