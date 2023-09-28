@@ -10,7 +10,7 @@ async function deleteItem(id) {
 
 const setQuantity = (item, amount) => {
     const newCart =  [...cart];
-    newCart.find(product => item.name === item.name).quantity = amount;
+    newCart.find(product => product.name === item.name && product.id === item.id).quantity = amount;
     setcart(newCart)
     
 }
@@ -46,6 +46,7 @@ async function checkout(cart, setcart){
                                 <input 
                                 className='quantity'
                                 value ={item.quantity} 
+                                id ={item.id}
                                 onChange={(e) => setQuantity(item,  e.target.value)}/>
                                 <div>
                                     <span onClick={() => deleteItem(item.id)}>Remove</span>

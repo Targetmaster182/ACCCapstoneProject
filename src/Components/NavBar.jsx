@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import '../Components/NavBar.css'
+import { useEffect } from "react";
 
 export default function NavBar({token, setToken, cart, setcart}) {
     const navigate = useNavigate()
 
     const getCartTotal = () => {
-        return cart.reduce(
-            (sum, {quantity}) => sum = quantity, 0
-        );
+        return cart.reduce((sum, {quantity}) =>{ 
+            if (!isNaN(parseInt(quantity))){
+                return sum + parseInt(quantity)  
+            }
+            return sum
+        }, 0);
     };
-
+    useEffect (() => {
+        getCartTotal()
+    },[cart])
     async function handleClick(token, setToken){
         sessionStorage.clear(token, setToken)
         await setToken("")
